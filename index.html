@@ -1,46 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>전수현 선임님의 첫 웹페이지</title>
-    <style>
-        body {
-            font-family: "Helvetica", sans-serif;
-            background: #f4f4f4;
-            padding: 40px;
-            text-align: center;
+<meta charset="UTF-8">
+<title>신청 페이지</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Pretendard", "Helvetica", sans-serif;
+        background: linear-gradient(135deg, #A1C4FD 0%, #C2E9FB 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        width: 850px;
+        background: rgba(255, 255, 255, 0.65);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-radius: 22px;
+        display: flex;
+        overflow: hidden;
+        backdrop-filter: blur(15px);
+    }
+
+    .left {
+        flex: 1.2;
+        background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') center/cover;
+    }
+
+    .right {
+        flex: 1;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(10px);
+    }
+
+    h2 {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .input-box {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .input-box input {
+        padding: 15px 18px;
+        border-radius: 12px;
+        border: none;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        font-size: 15px;
+    }
+
+    .btn {
+        margin-top: 10px;
+        padding: 14px;
+        background: #6C63FF;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 17px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(108,99,255,0.4);
+        transition: 0.2s;
+    }
+
+    .btn:hover {
+        background: #5a55e6;
+    }
+
+    .sub-links {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+    }
+
+    .sub-links a {
+        color: #6C63FF;
+        text-decoration: none;
+        margin-left: 5px;
+    }
+
+    /* 반응형 */
+    @media (max-width: 800px) {
+        .container {
+            flex-direction: column;
+            width: 90%;
+            height: auto;
         }
-        .box {
-            background: white;
+        .left {
+            height: 200px;
+        }
+        .right {
             padding: 30px;
-            width: 400px;
-            margin: auto;
-            border-radius: 12px;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
         }
-        h1 {
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 12px 20px;
-            background: #0b93f6;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
-    <div class="box">
-        <h1>👋 안녕하세요!</h1>
-        <p>이 웹페이지는 전수현 선임님이 직접 만든 첫 HTML 페이지입니다.</p>
-        <p>곧 여기에 톡 UI 챗봇도 추가할 수 있어요!</p>
+<div class="container">
+    <div class="left"></div>
 
-        <button onclick="alert('HTML 잘 만들고 있어요 👍')">눌러보기</button>
+    <div class="right">
+        <h2>행사 참가 신청</h2>
+
+        <div class="input-box">
+            <input type="text" placeholder="이름 입력">
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="사번 입력">
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="연락처 입력">
+        </div>
+
+        <button class="btn">신청하기</button>
+
+        <div class="sub-links">
+            문제가 있나요? 
+            <a href="#">문의하기</a>
+        </div>
     </div>
+</div>
 
 </body>
 </html>
