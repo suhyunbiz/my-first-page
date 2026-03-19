@@ -427,3 +427,25 @@ function closeModal() {
     document.getElementById("modalBg").style.display = "none";
 }
 document.getElementById("modalBg").addEventListener("click", function(e) {
+    if (e.target.id === "modalBg") closeModal();
+});
+
+function submitForm() {
+    const agree = document.getElementById("agree").checked;
+
+    if (!agree) {
+        alert("개인정보 수집·이용에 동의해야 제출이 가능합니다.");
+        return;
+    }
+
+    closeModal();
+    document.getElementById("successModalBg").style.display = "flex";
+}
+
+function closeSuccessModal() {
+    document.getElementById("successModalBg").style.display = "none";
+}
+</script>
+
+</body>
+</html>
