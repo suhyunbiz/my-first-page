@@ -5,7 +5,9 @@
 <title>'26년 1차 CTO부문 스마트 어학 Speak 신청</title>
 
 <style>
-/* 전체 배경 */
+/* =============================
+   🌿 전체 페이지 스타일
+============================= */
 body {
     margin: 0;
     padding: 0;
@@ -14,7 +16,6 @@ body {
     color: #2E2E2E;
 }
 
-/* 메인 컨테이너 */
 .container {
     width: 100%;
     max-width: 1100px;
@@ -28,12 +29,11 @@ body {
     font-size: 42px;
     font-weight: 800;
     color: #3DAA9F;
-    line-height: 1.3;
-    letter-spacing: -0.4px;
     margin-top: 40px;
+    line-height: 1.3;
 }
 
-/* 유의사항 강조 라벨 */
+/* 유의사항 라벨 */
 .notice-label {
     margin: 18px auto 0;
     display: flex;
@@ -47,9 +47,9 @@ body {
     font-weight: 600;
     width: fit-content;
 }
-.notice-label img { width: 18px; height: 18px; }
+.notice-label img { width: 18px; }
 
-/* 신청기간 강조 박스 */
+/* 신청기간 박스 */
 .highlight-box {
     margin: 40px auto 0;
     background: #FFFFFFEE;
@@ -82,8 +82,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
-/* 각 카드 */
-.card {
+/* 카드 */
+.card, .wide-card {
     background: #FFFFFFEE;
     padding: 26px;
     border-radius: 20px;
@@ -100,27 +100,19 @@ body {
     color: #3DAA9F;
     margin-bottom: 12px;
 }
-.card-title img { width: 30px; height: 30px; }
+.card-title img { width: 30px; }
 
-/* 카드 본문 */
-.card p {
-    line-height: 1.75;
-    font-size: 16px;
-    color: #374B48;
-    margin: 0;
-}
-
-/* 유의사항 (full width) */
 .wide-card {
     grid-column: 1 / -1;
-    background: #FFFFFFEE;
-    padding: 28px;
-    border-radius: 20px;
-    border: 1px solid #DFF4F0;
-    box-shadow: 0 15px 32px rgba(0,0,0,0.06);
 }
 
-/* 신청하기 버튼 */
+.card p {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* 신청 버튼 */
 .apply-btn {
     margin: 50px auto 0;
     width: 260px;
@@ -134,13 +126,12 @@ body {
     cursor: pointer;
     display: block;
     box-shadow: 0 10px 25px rgba(94,202,180,0.25);
-    transition: 0.2s;
 }
 .apply-btn:hover {
     transform: translateY(-2px);
 }
 
-/* 문의처 */
+/* 문의 */
 .footer-card {
     margin-top: 40px;
     background: #FFFFFFEE;
@@ -153,11 +144,14 @@ body {
     color: #4C6662;
 }
 
-/* 모달 배경 */
+/* =============================
+   🌿 팝업 (완전 개선본)
+============================= */
+
+/* 배경 */
 .modal-bg {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.35);
     backdrop-filter: blur(7px);
     display: none;
@@ -166,69 +160,87 @@ body {
     z-index: 999;
 }
 
-/* 모달 팝업 */
+/* 팝업 박스 - 400px 버전 */
 .modal {
+    width: 400px;
     background: #FFFFFF;
-    width: 360px;
-    padding: 36px 26px 46px;
-    border-radius: 28px;
+    padding: 40px 30px 48px;
+    border-radius: 26px;
     box-shadow: 0 22px 55px rgba(0,0,0,0.22);
     position: relative;
     animation: fadeIn 0.28s ease;
 }
 
-/* 모달 닫기 */
+/* 닫기 버튼 */
 .modal-close {
     position: absolute;
     top: 14px;
     right: 16px;
-    font-size: 20px;
-    color: #55B7AA;
+    font-size: 22px;
     cursor: pointer;
-    font-weight: 700;
+    color: #58B8A9;
 }
 
-/* 라벨 */
-.modal label {
+/* 제목 */
+.modal h3 {
+    text-align: center;
+    font-size: 22px;
+    color: #3DAA9F;
+    margin-bottom: 26px;
+}
+
+/* 입력 그룹 */
+.input-block {
+    margin-bottom: 22px;
+}
+
+.input-block label {
     display: block;
-    margin-bottom: 6px;
-    color: #3BAA99;
     font-size: 15px;
     font-weight: 600;
+    color: #3AA697;
+    margin-bottom: 8px;
 }
 
-/* 인풋 필드 */
+/* 완전 좌측 정렬 input */
 .modal input[type=text],
 .modal input[type=email] {
-    width: 80%;                    /* ✨ 안쪽으로 쏙 들어오게! */
-    padding: 12px 14px;
-    border: 1px solid #C6F0E7;
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid #C8EEE7;
     background: #F4FFFC;
     border-radius: 12px;
     font-size: 15px;
     font-weight: 500;
-    margin-left: 10%;
-    margin-right: 10%;
+    box-sizing: border-box;
     color: #364743;
 }
-.modal input::placeholder { color: #9CCBC2; }
 
-/* 개인정보 동의 */
-.modal .consent {
-    margin-top: 16px;
-    font-size: 14px;
-    color: #4D6662;
+.modal input:focus {
+    border-color: #7FE0D0;
+    box-shadow: 0 0 6px rgba(128,220,205,0.45);
+    outline: none;
 }
-.modal input[type=checkbox] {
+
+.modal input::placeholder { color: #A4CCC4; }
+
+/* 개인정보 */
+.consent {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #4A6763;
+}
+
+.consent input {
     transform: scale(1.2);
     margin-right: 6px;
 }
 
 /* 제출 버튼 */
-.modal .submit-btn {
+.submit-btn {
     width: 100%;
-    margin-top: 24px;
-    padding: 14px;
+    margin-top: 26px;
+    padding: 15px;
     background: linear-gradient(135deg, #7EE7D4, #5FDCC5);
     border: none;
     border-radius: 14px;
@@ -237,15 +249,14 @@ body {
     font-weight: 700;
     cursor: pointer;
 }
-.modal .submit-btn:hover {
+.submit-btn:hover {
     background: linear-gradient(135deg, #63D6C3, #45C9B2);
 }
 
-/* 제출 완료 팝업 */
+/* 제출완료 모달 */
 .success-modal-bg {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.35);
     backdrop-filter: blur(8px);
     display: none;
@@ -253,6 +264,7 @@ body {
     align-items: center;
     z-index: 1001;
 }
+
 .success-modal {
     background: #FFFFFF;
     padding: 40px 30px;
@@ -274,13 +286,12 @@ body {
     cursor: pointer;
 }
 
-/* Animation */
+/* 팝업 등장 애니메이션 */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    to   { opacity: 1; transform: scale(1); }
 }
 </style>
-
 </head>
 
 <body>
@@ -331,10 +342,7 @@ body {
                 <img src="https://img.icons8.com/fluency/48/checked.png">
                 이수조건
             </div>
-            <p>
-                - 월 평균 400문장 이상<br>
-                - 총 1,200문장 이상
-            </p>
+            <p>- 월 평균 400문장 이상<br>- 총 1,200문장 이상</p>
         </div>
 
         <div class="wide-card">
@@ -343,13 +351,14 @@ body {
                 유의사항
             </div>
             <p>
-                - 개인 휴대폰 기반 수업이며, 업무 사유 등은 출석 인정 불가합니다.<br>
+                - 개인 휴대폰 기반 수업이며 업무 사유 등은 출석 인정 불가합니다.<br>
                 - 신청 후 취소 불가 (중도 취소 시 전액 본인 부담).<br>
-                - 사내 메일로 신청하며, 개인 메일 신청 시 접수가 불가합니다.<br>
-                - 회사 지원 영어학습 계정은 본인만 사용해야 하며, 타인 양도 금지.<br>
+                - 사내 메일 신청만 가능하며 개인 메일은 접수 불가.<br>
+                - 회사 지원 영어학습 계정은 본인만 사용해야 하며 타인 양도 금지.<br>
                 - 학습 문장량은 Speak 앱 “프로필” 메뉴에서 확인 가능합니다.
             </p>
         </div>
+
     </div>
 
     <button class="apply-btn" onclick="openModal()">신청하기</button>
@@ -357,13 +366,15 @@ body {
     <div class="footer-card">📞 스픽 고객센터: support_biz@usespeak.com</div>
 </div>
 
-<!-- 신청 모달 -->
+<!-- =============================
+     🌿 신청 팝업
+============================= -->
 <div class="modal-bg" id="modalBg">
 
     <div class="modal">
         <div class="modal-close" onclick="closeModal()">✕</div>
 
-        <h3 style="text-align:center; color:#3DAA9F;">신청 정보 입력</h3>
+        <h3>신청 정보 입력</h3>
 
         <div class="input-block">
             <label>성명</label>
@@ -397,10 +408,12 @@ body {
 
 </div>
 
-<!-- 제출 완료 모달 -->
+<!-- =============================
+     🌿 제출 완료 모달
+============================= -->
 <div class="success-modal-bg" id="successModalBg">
     <div class="success-modal">
-        <h2>✔ 제출 완료!</h2> 
+        <h2>✔ 제출 완료!</h2>
         <p>신청이 성공적으로 제출되었습니다.<br>감사합니다 💚</p>
         <button onclick="closeSuccessModal()">확인</button>
     </div>
@@ -414,26 +427,3 @@ function closeModal() {
     document.getElementById("modalBg").style.display = "none";
 }
 document.getElementById("modalBg").addEventListener("click", function(e) {
-    if (e.target.id === "modalBg") closeModal();
-});
-
-/* 개인정보 동의 체크 검증 */
-function submitForm() {
-    const agree = document.getElementById("agree").checked;
-
-    if (!agree) {
-        alert("개인정보 수집·이용에 동의해야 제출이 가능합니다.");
-        return;
-    }
-
-    closeModal();
-    document.getElementById("successModalBg").style.display = "flex";
-}
-
-function closeSuccessModal() {
-    document.getElementById("successModalBg").style.display = "none";
-}
-</script>
-
-</body>
-</html>
