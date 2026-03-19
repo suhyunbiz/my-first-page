@@ -30,7 +30,7 @@
         line-height: 1.3;
     }
 
-    /* 유의사항 강조 라벨 */
+    /* 유의사항 안내 라벨 */
     .notice-label {
         margin: 16px auto 0;
         width: fit-content;
@@ -46,11 +46,10 @@
         font-weight: 600;
     }
     .notice-label img {
-        width: 18px;
-        height: 18px;
+        width: 18px; height: 18px;
     }
 
-    /* 신청기간 박스 */
+    /* 신청기간 강조 박스 */
     .highlight-box {
         margin: 40px auto 0;
         background: #FFFFFFEE;
@@ -78,7 +77,7 @@
         color: #2B9C8F;
     }
 
-    /* 카드 2열 */
+    /* 카드 레이아웃 (2열) */
     .grid {
         margin-top: 50px;
         display: grid;
@@ -104,8 +103,7 @@
         margin-bottom: 12px;
     }
     .card-title img {
-        width: 30px;
-        height: 30px;
+        width: 30px; height: 30px;
     }
 
     .card p {
@@ -115,7 +113,7 @@
         margin: 0;
     }
 
-    /* 유의사항 (가로 전체) */
+    /* 유의사항 (full width) */
     .wide-card {
         grid-column: 1 / -1;
         background: #FFFFFFEE;
@@ -172,12 +170,12 @@
         z-index: 999;
     }
 
-    /* 모달 팝업 */
+    /* 모달 */
     .modal {
         background: #FFFFFF;
-        width: 380px;
-        padding: 30px 24px 35px;
-        border-radius: 24px;
+        width: 360px;
+        padding: 32px 24px 40px;
+        border-radius: 26px;
         box-shadow: 0 18px 45px rgba(0,0,0,0.25);
         position: relative;
         animation: fadeIn 0.28s ease;
@@ -194,21 +192,15 @@
         font-weight: 700;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal h3 {
-        margin-top: 0;
-        color: #3DAA9F;
-        font-size: 23px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .modal .input-block {
-        margin-bottom: 14px;
+    /* input 박스 수정 */
+    .modal input[type=text],
+    .modal input[type=email] {
+        width: calc(100% - 8px);
+        padding: 12px 14px;
+        border: 1px solid #CFEFE8;
+        border-radius: 12px;
+        background: #F1FFFB;
+        font-size: 15px;
     }
 
     .modal label {
@@ -217,16 +209,6 @@
         color: #3DAA9F;
         font-size: 14px;
         font-weight: 600;
-    }
-
-    .modal input[type=text],
-    .modal input[type=email] {
-        width: 100%;
-        padding: 12px 14px;
-        border: 1px solid #CFEFE8;
-        border-radius: 12px;
-        background: #F7FFFD;
-        font-size: 15px;
     }
 
     .modal .consent {
@@ -254,36 +236,56 @@
         cursor: pointer;
         transition: 0.2s;
     }
-
     .modal .submit-btn:hover {
         background: linear-gradient(135deg, #63D6C3, #45C9B2);
     }
 
-    /* 제출 완료 메시지 */
-    .success-popup {
+    /* 성공 팝업 */
+    .success-modal-bg {
         position: fixed;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #FFFFFF;
-        padding: 14px 22px;
-        border-radius: 14px;
-        border: 1px solid #D4F5EB;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        color: #3DAA9F;
-        font-size: 16px;
-        font-weight: 600;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.35);
+        backdrop-filter: blur(8px);
         display: none;
-        animation: popUp 0.25s ease;
-        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
     }
 
-    @keyframes popUp {
-        from { opacity: 0; transform: translate(-50%, 10px); }
-        to { opacity: 1; transform: translate(-50%, 0); }
+    .success-modal {
+        background: #FFFFFF;
+        padding: 40px 30px;
+        width: 340px;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.25);
     }
 
+    .success-modal h2 {
+        color: #37A99B;
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .success-modal p {
+        color: #4C6662;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .success-modal button {
+        margin-top: 22px;
+        padding: 12px 20px;
+        background: #67DAC7;
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
 </style>
+
 </head>
 
 <body>
@@ -295,13 +297,13 @@
         '26년 1차 CTO부문<br>스마트 어학 ‘Speak’ 신청
     </div>
 
-    <!-- 강조 라벨 -->
+    <!-- 라벨 -->
     <div class="notice-label">
         <img src="https://img.icons8.com/fluency/48/info.png">
         유의사항을 반드시 확인해주세요!
     </div>
 
-    <!-- 신청기간 강조 박스 -->
+    <!-- 신청기간 -->
     <div class="highlight-box">
         <div class="highlight-title">📅 신청기간</div>
         <div class="highlight-text">
@@ -310,7 +312,7 @@
         </div>
     </div>
 
-    <!-- 3개 카드 -->
+    <!-- 카드 3개 -->
     <div class="grid">
 
         <div class="card">
@@ -318,10 +320,7 @@
                 <img src="https://img.icons8.com/fluency/48/calendar.png">
                 학습기간
             </div>
-            <p>
-                ‘26/03/09(월) ~ ‘26/06/07(일)<br>
-                총 3개월 자율학습
-            </p>
+            <p>‘26/03/09(월) ~ ‘26/06/07(일)<br>총 3개월 자율학습</p>
         </div>
 
         <div class="card">
@@ -361,10 +360,9 @@
                 - 학습 문장량은 Speak 앱 “프로필” 메뉴에서 확인 가능합니다.
             </p>
         </div>
-
     </div>
 
-    <!-- 신청하기 버튼 -->
+    <!-- 신청 버튼 -->
     <button class="apply-btn" onclick="openModal()">신청하기</button>
 
     <!-- 문의처 -->
@@ -373,49 +371,51 @@
     </div>
 </div>
 
-<!-- 모달(신청 입력창) -->
+<!-- 모달 -->
 <div class="modal-bg" id="modalBg">
-
     <div class="modal">
-        <div class="modal-close" onclick="closeModal()">✕</div>
 
-        <h3>신청 정보 입력</h3>
+        <div class="modal-close" onclick="closeModal()">✕</div>
+        <h3 style="text-align:center; color:#3DAA9F;">신청 정보 입력</h3>
 
         <div class="input-block">
             <label>성명</label>
-            <input type="text" placeholder="홍길동">
+            <input id="name" type="text" placeholder="홍길동">
         </div>
 
         <div class="input-block">
             <label>사번</label>
-            <input type="text" placeholder="123456">
+            <input id="employeeId" type="text" placeholder="123456">
         </div>
 
         <div class="input-block">
             <label>이메일 (사내메일)</label>
-            <input type="email" placeholder="abcdef@lge.com">
+            <input id="email" type="email" placeholder="abcdef@lge.com">
         </div>
 
         <div class="input-block">
             <label>핸드폰 번호</label>
-            <input type="text" placeholder="010-0000-0000">
+            <input id="phone" type="text" placeholder="010-0000-0000">
         </div>
 
         <div class="consent">
             <label>
-                <input type="checkbox">
+                <input id="agree" type="checkbox">
                 개인정보 수집·이용에 동의합니다
             </label>
         </div>
 
         <button class="submit-btn" onclick="submitForm()">제출하기</button>
     </div>
-
 </div>
 
-<!-- 제출 완료 메시지 -->
-<div class="success-popup" id="successPopup">
-    ✔ 신청이 성공적으로 제출되었습니다!
+<!-- 제출 완료 팝업 -->
+<div class="success-modal-bg" id="successModalBg">
+    <div class="success-modal">
+        <h2>✔ 제출 완료!</h2>
+        <p>신청이 성공적으로 제출되었습니다.<br>감사합니다 💚</p>
+        <button onclick="closeSuccessModal()">확인</button>
+    </div>
 </div>
 
 <script>
@@ -433,13 +433,24 @@ document.getElementById("modalBg").addEventListener("click", function(e) {
     }
 });
 
+/* 개인정보 동의 체크 + 성공 팝업 */
 function submitForm() {
+    const agree = document.getElementById("agree").checked;
+
+    if (!agree) {
+        alert("개인정보 수집·이용에 동의해야 제출이 가능합니다.");
+        return;
+    }
+
     closeModal();
-    const popup = document.getElementById("successPopup");
-    popup.style.display = "block";
-    setTimeout(() => { popup.style.display = "none"; }, 2500);
+    document.getElementById("successModalBg").style.display = "flex";
+}
+
+function closeSuccessModal() {
+    document.getElementById("successModalBg").style.display = "none";
 }
 </script>
 
 </body>
 </html>
+``
