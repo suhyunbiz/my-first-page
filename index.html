@@ -2,177 +2,178 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<title>행사 참가 신청</title>
+<title>'26년 1차 CTO부문 스마트 어학 Speak 신청</title>
+
 <style>
     body {
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-        background: linear-gradient(135deg, #F7F3FF 0%, #F1EBFF 60%, #E8E0FF 100%);
-        height: 100vh;
-        overflow: hidden;
+        background: linear-gradient(135deg, #F7F3FF 0%, #F1EBFF 50%, #E9E2FF 100%);
         color: #2E2E2E;
     }
 
-    /* 상단 헤더 */
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
+    /* 중앙 컨테이너 */
+    .container {
         width: 100%;
-        padding: 28px 42px;
-        box-sizing: border-box;
-        background: rgba(255, 255, 255, 0.55);
-        backdrop-filter: blur(20px);
-        z-index: 99;
-        border-bottom: 1px solid rgba(255,255,255,0.5);
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
     }
 
-    .header-title-area {
+    /* 검색창 스타일 타이틀 박스 */
+    .search-box {
+        margin-top: 70px;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 14px 22px;
+        background: white;
+        border-radius: 50px;
+        font-size: 16px;
+        color: #B7A4FF;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+        border: 1px solid #E8E0FF;
+    }
+
+    /* 메인 타이틀 */
+    .main-title {
+        font-size: 32px;
+        font-weight: 800;
+        margin-top: 36px;
+        color: #6F4CE4;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        color: #4C4870;
+        margin-top: 6px;
+        margin-bottom: 30px;
+    }
+
+    /* 칩 영역 */
+    .chips {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .chip {
+        background: #FFFFFFEE;
+        border: 1px solid #E6DFFF;
+        padding: 10px 16px;
+        border-radius: 20px;
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 8px;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .header-icon {
-        width: 36px;
-        height: 36px;
-        filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
+    .chip img {
+        width: 22px;
+        height: 22px;
     }
 
-    .header h1 {
-        margin: 0;
-        font-size: 28px;
-        font-weight: 700;
-        color: #6246C7;
+    /* 카드 레이아웃 */
+    .cards {
+        margin-top: 50px;
+        display: grid;
+        gap: 22px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
-    .header p {
-        margin: 6px 0 0;
-        font-size: 15px;
-        color: #6F6F7A;
-    }
-
-    /* 전체 레이아웃 */
-    .layout {
-        display: flex;
-        gap: 40px;
-        padding: 160px 60px 40px;
-        box-sizing: border-box;
-        height: 100vh;
-    }
-
-    /* 왼쪽 상세 정보 */
-    .left {
-        flex: 1;
-        background: rgba(255,255,255,0.6);
+    .card {
+        background: #FFFFFFEE;
+        padding: 24px;
         border-radius: 22px;
-        padding: 28px;
-        overflow-y: auto;
-        height: calc(100vh - 200px);
-        backdrop-filter: blur(18px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        text-align: left;
+        border: 1px solid #E7DEFF;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.06);
     }
 
-    .info-block {
+    .card-title {
         display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        margin-bottom: 22px;
-    }
-
-    .info-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .left h3 {
-        margin: 0 0 8px;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
         font-size: 18px;
-        font-weight: 700;
-        color: #5A45B5;
+        color: #6F4CE4;
+        margin-bottom: 12px;
     }
 
-    .left p {
-        margin: 0;
-        color: #4C4C53;
-        font-size: 15px;
+    .card-title img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .card p {
+        color: #49445A;
         line-height: 1.55;
+        font-size: 15px;
+        margin: 0;
     }
 
-    /* 오른쪽 입력 폼 */
-    .right {
-        width: 420px;
-        background: #ffffffdd;
-        padding: 34px;
-        border-radius: 26px;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-        height: fit-content;
+    /* 신청폼 */
+    .form-box {
+        margin: 80px auto 60px;
+        background: #FFFFFFEE;
+        padding: 32px;
+        width: 360px;
+        border-radius: 24px;
+        border: 1px solid #E7DEFF;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
     }
 
-    .right h2 {
-        margin: 0 0 24px;
-        font-size: 24px;
-        color: #5A45B5;
-        font-weight: 700;
+    .form-box h3 {
+        margin-top: 0;
+        font-size: 22px;
+        color: #6F4CE4;
     }
 
-    .input-box {
-        margin-bottom: 18px;
+    .input-block {
+        margin-bottom: 16px;
+        text-align: left;
     }
 
     label {
         display: block;
         margin-bottom: 6px;
-        color: #5A45B5;
+        color: #6F4CE4;
         font-size: 14px;
         font-weight: 600;
     }
 
-    .input-box input {
+    input {
         width: 100%;
-        padding: 14px 16px;
-        border-radius: 14px;
-        border: 1px solid #E4DFFF;
+        padding: 12px 15px;
+        border: 1px solid #E6DFFF;
         background: #FAF9FF;
+        border-radius: 12px;
         font-size: 15px;
+    }
+
+    .btn {
+        margin-top: 18px;
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #B99CFF, #A682FF);
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(140,114,255,0.25);
         transition: 0.2s;
     }
 
-    .input-box input:focus {
-        outline: none;
-        border-color: #B7A4FF;
-        box-shadow: 0 0 0 4px rgba(183,164,255,0.28);
-        background: #ffffff;
-    }
-
-    /* 버튼 */
-    .btn {
-        margin-top: 12px;
-        width: 100%;
-        padding: 15px;
-        background: linear-gradient(135deg, #B99CFF, #A682FF);
-        border: none;
-        border-radius: 14px;
-        color: white;
-        font-size: 17px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.25s;
-        box-shadow: 0 10px 25px rgba(140,114,255,0.25);
-    }
-
     .btn:hover {
+        transform: translateY(-2px);
         background: linear-gradient(135deg, #A682FF, #926BFF);
-        transform: translateY(-1px);
-    }
-
-    /* 스크롤바 */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-thumb {
-        background: #CBBDFB;
-        border-radius: 6px;
     }
 
 </style>
@@ -180,90 +181,140 @@
 
 <body>
 
-<!-- 헤더 -->
-<div class="header">
-    <div class="header-title-area">
-        <img class="header-icon" src="https://img.icons8.com/fluency/48/event-accepted.png" />
-        <h1>행사 참가 신청</h1>
-    </div>
-    <p>행사 안내를 확인하고 신청 정보를 입력해주세요 💜</p>
-</div>
+<div class="container">
 
-<!-- 레이아웃 -->
-<div class="layout">
-
-    <!-- 좌측 상세 정보 -->
-    <div class="left">
-
-        <div class="info-block">
-            <img class="info-icon" src="https://img.icons8.com/fluency/48/planner.png">
-            <div>
-                <h3>행사 일정 (가안)</h3>
-                <p>2026년 5월 예정 · 추후 확정 공지</p>
-            </div>
-        </div>
-
-        <div class="info-block">
-            <img class="info-icon" src="https://img.icons8.com/fluency/48/marker.png">
-            <div>
-                <h3>장소</h3>
-                <p>사내 강당 또는 외부 공간 (추후 공지)</p>
-            </div>
-        </div>
-
-        <div class="info-block">
-            <img class="info-icon" src="https://img.icons8.com/fluency/48/conference-call.png">
-            <div>
-                <h3>프로그램 안내 (가안)</h3>
-                <p>
-                    · 오프닝 및 환영 인사<br>
-                    · 주요 세션 발표<br>
-                    · 참여형 그룹 활동<br>
-                    · Q&A, 네트워킹<br>
-                    · 설문 및 종료 안내
-                </p>
-            </div>
-        </div>
-
-        <div class="info-block">
-            <img class="info-icon" src="https://img.icons8.com/fluency/48/info.png">
-            <div>
-                <h3>유의사항</h3>
-                <p>
-                    - 참석 확인 필수<br>
-                    - 행사 시작 10분 전까지 도착<br>
-                    - 준비물: 사원증, 필기도구
-                </p>
-            </div>
-        </div>
-
-        <div class="info-block">
-            <img class="info-icon" src="https://img.icons8.com/fluency/48/communication.png">
-            <div>
-                <h3>문의처</h3>
-                <p>교육서비스센터 담당자</p>
-            </div>
-        </div>
-
+    <!-- 검색창 모양 상단 박스 -->
+    <div class="search-box">
+        📌 ‘26년 1차 CTO부문 스마트 어학 "Speak" 신청 안내
     </div>
 
-    <!-- 우측 입력 폼 -->
-    <div class="right">
-        <h2>신청 정보 입력</h2>
+    <!-- 메인 타이틀 -->
+    <div class="main-title">
+        '26년 1차 CTO부문 스마트 어학 'Speak' 신청
+    </div>
+    <div class="subtitle">
+        신청기간 · 교육비 · 이수조건 · 유의사항을 확인해주세요
+    </div>
 
-        <div class="input-box">
+    <!-- 칩 -->
+    <div class="chips">
+        <div class="chip">
+            <img src="https://img.icons8.com/fluency/48/planner.png">
+            신청기간 안내
+        </div>
+        <div class="chip">
+            <img src="https://img.icons8.com/fluency/48/calendar.png">
+            학습기간 3개월
+        </div>
+        <div class="chip">
+            <img src="https://img.icons8.com/fluency/48/money.png">
+            교육비 조건
+        </div>
+        <div class="chip">
+            <img src="https://img.icons8.com/fluency/48/checked.png">
+            이수 기준
+        </div>
+        <div class="chip">
+            <img src="https://img.icons8.com/fluency/48/info.png">
+            유의사항
+        </div>
+    </div>
+
+    <!-- 카드 레이아웃 -->
+    <div class="cards">
+
+        <!-- 신청기간 -->
+        <div class="card">
+            <div class="card-title">
+                <img src="https://img.icons8.com/fluency/48/planner.png">
+                신청기간
+            </div>
+            <p>
+                3/3(화) 오전 10시 ~ 3/5(목) 오후 5시  
+                <br><strong>※ 선착순 마감</strong>
+            </p>
+        </div>
+
+        <!-- 학습기간 -->
+        <div class="card">
+            <div class="card-title">
+                <img src="https://img.icons8.com/fluency/48/calendar.png">
+                학습기간
+            </div>
+            <p>
+                '26/03/09(월) ~ '26/06/07(일)  
+                <br>총 3개월 자율학습
+            </p>
+        </div>
+
+        <!-- 교육비 안내 -->
+        <div class="card">
+            <div class="card-title">
+                <img src="https://img.icons8.com/fluency/48/money.png">
+                교육비 안내
+            </div>
+            <p>
+                - 학습 미이수 시 교육비 전액 본인 부담  
+                <br>- 이수 시 본인 50% 부담  
+                <br>- 안내 금액은 3개월 기준 금액
+            </p>
+        </div>
+
+        <!-- 이수조건 -->
+        <div class="card">
+            <div class="card-title">
+                <img src="https://img.icons8.com/fluency/48/checked.png">
+                이수조건
+            </div>
+            <p>
+                - 월 평균 400문장 이상  
+                <br>- 총 1,200문장 이상 말한 기록 필요
+            </p>
+        </div>
+
+        <!-- 유의사항 -->
+        <div class="card">
+            <div class="card-title">
+                <img src="https://img.icons8.com/fluency/48/info.png">
+                유의사항
+            </div>
+            <p>
+                - 개인 휴대폰 기반 수업이며, 업무 사유 등은 출석 인정 불가  
+                <br>- 신청 후 취소 불가 (중도 취소시 전액 본인부담)  
+                <br>- 사내 메일로 신청 (개인메일 신청 불가)  
+                <br>- 회사 지원 계정은 본인만 사용 (타인사용/양도 금지)  
+                <br>- 학습 문장량은 Speak 앱 프로필에서 확인
+            </p>
+        </div>
+
+        <!-- 문의처 -->
+        <div class="card">
+            <div class="card-title">
+                <img src="https://img.icons8.com/fluency/48/communication.png">
+                문의처
+            </div>
+            <p>스픽 고객센터: support_biz@usespeak.com</p>
+        </div>
+
+    </div>
+
+    <!-- 신청폼 -->
+    <div class="form-box">
+        <h3>신청 정보 입력</h3>
+
+        <div class="input-block">
             <label>이름</label>
-            <input type="text" placeholder="홍길동" />
+            <input type="text" placeholder="홍길동">
         </div>
 
-        <div class="input-box">
+        <div class="input-block">
             <label>사번</label>
-            <input type="text" placeholder="123456" />
+            <input type="text" placeholder="123456">
         </div>
 
-        <div class="input-box">
+        <div class="input-block">
             <label>연락처</label>
-            <input type="text" placeholder="010-0000-0000" />
+            <input type="text" placeholder="010-0000-0000">
         </div>
 
         <button class="btn">신청하기</button>
