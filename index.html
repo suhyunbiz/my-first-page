@@ -704,10 +704,12 @@ body::before {
 </div>
 
 <script>
+const FLOW_URL = "https://default5069cde4642a45c08094d0c2dec10b.e3.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f9c3288a4ffe44b088b9c55b450a5700/triggers/manual/paths/invoke?api-version=1";
 const phoneInput = document.getElementById("phone");
 const feedbackModalBg = document.getElementById("feedbackModalBg");
 const feedbackTitle = document.getElementById("feedbackTitle");
 const feedbackMessage = document.getElementById("feedbackMessage");
+const submitButton = document.querySelector(".submit-btn");
 
 function formatPhoneNumber(value) {
     const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -753,14 +755,14 @@ feedbackModalBg.addEventListener("click", function(e) {
     if (e.target.id === "feedbackModalBg") closeFeedbackModal();
 });
 
-function submitForm() {
+async function submitForm() {
     const name = document.getElementById("name").value.trim();
-    const employeeId = document.getElementById("employeeId").value.trim();
+    const sabun = document.getElementById("employeeId").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = phoneInput.value.trim();
     const agree = document.getElementById("agree").checked;
 
-    if (!name || !employeeId || !email || !phone) {
+    if (!name || !sabun || !email || !phone) {
         showFeedbackModal("입력 확인", "모든 항목을 입력해주세요.");
         return;
     }
@@ -780,8 +782,37 @@ function submitForm() {
         return;
     }
 
-    closeModal();
-    showFeedbackModal("✔ 신청 완료!", "신청이 완료되었습니다. 감사합니다 💚");
+    const payload = {
+        name,
+        sabun,
+        email,
+        phone
+    };
+
+    submitButton.disabled = true;
+    submitButton.textContent = "전송 중...";
+
+    try {
+        const response = await fetch(FLOW_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error("Flow request failed");
+        }
+
+        closeModal();
+        showFeedbackModal("✔ 신청 완료!", "신청이 완료되었습니다. 감사합니다 💚");
+    } catch (error) {
+        showFeedbackModal("전송 오류", "신청 정보를 전송하지 못했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "제출하기";
+    }
 }
 </script>
 
