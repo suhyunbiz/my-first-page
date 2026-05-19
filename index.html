@@ -704,7 +704,7 @@ body::before {
 </div>
 
 <script>
-const FLOW_URL = "https://default5069cde4642a45c08094d0c2dec10b.e3.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f9c3288a4ffe44b088b9c55b450a5700/triggers/manual/paths/invoke?api-version=1";
+const powerAutomateUrl = 'https://default5069cde4642a45c08094d0c2dec10b.e3.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f9c3288a4ffe44b088b9c55b450a5700/triggers/manual/paths/invoke?api-version=1';
 const phoneInput = document.getElementById("phone");
 const feedbackModalBg = document.getElementById("feedbackModalBg");
 const feedbackTitle = document.getElementById("feedbackTitle");
@@ -782,6 +782,11 @@ async function submitForm() {
         return;
     }
 
+    if (!powerAutomateUrl || powerAutomateUrl === '여기에 주소 붙여넣기') {
+        showFeedbackModal("주소 확인", "Power Automate 주소를 먼저 설정해주세요.");
+        return;
+    }
+
     const payload = {
         name,
         sabun,
@@ -793,10 +798,11 @@ async function submitForm() {
     submitButton.textContent = "전송 중...";
 
     try {
-        const response = await fetch(FLOW_URL, {
-            method: "POST",
+        const response = await fetch(powerAutomateUrl, {
+            method: 'POST',
+            mode: 'cors',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload)
         });
@@ -808,7 +814,7 @@ async function submitForm() {
         closeModal();
         showFeedbackModal("✔ 신청 완료!", "신청이 완료되었습니다. 감사합니다 💚");
     } catch (error) {
-        showFeedbackModal("전송 오류", "신청 정보를 전송하지 못했습니다. 잠시 후 다시 시도해주세요.");
+        showFeedbackModal("전송 오류", "데이터 전송에 실패했습니다. 관리자에게 문의하세요.");
     } finally {
         submitButton.disabled = false;
         submitButton.textContent = "제출하기";
